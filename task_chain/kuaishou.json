@@ -1,0 +1,26 @@
+{
+  "start": {
+    "success": "get_socks5"
+  },
+  "get_socks5": {
+    "_alias": "core:get_socks5",
+    "success": "kuaishou:login",
+    "failed": "kuaishou:get_socks5:3"
+  },
+  "login": {
+    "success": "do_task",
+    "failed": "core:get_socks5:3",
+    "self": "login"
+  },
+  "do_task": {
+    "_out": [2, "core:get_task"],
+    "success": "task_success",
+    "failed": "do_task:3",
+    "acc_error": "core:get_task"
+  },
+  "task_success": {
+    "_out": [2, "core:get_task"],
+    "success": "core:get_task",
+    "failed": "task_success:3"
+  }
+}

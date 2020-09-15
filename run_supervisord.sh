@@ -1,0 +1,1 @@
+supervisord -c supervisord_deploy.conf

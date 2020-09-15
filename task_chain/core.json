@@ -1,0 +1,18 @@
+{
+  "start": {
+    "success": "spider_register"
+  },
+  "spider_register": {
+    "success": "get_task",
+    "failed": "spider_register:3"
+  },
+  "get_task": {
+    "xinkuai": "xinkuai:start",
+    "py": "kuaishou:start",
+    "failed": "get_task:3"
+  },
+  "get_socks5": {
+    "success": "",
+    "failed": "get_socks5:3"
+  }
+}

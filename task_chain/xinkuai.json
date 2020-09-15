@@ -1,0 +1,50 @@
+{
+  "start": {
+    "success": "load_cookies"
+  },
+  "get_socks5": {
+    "_alias": "core:get_socks5",
+    "success": "xinkuai:load_cookies",
+    "failed": "xinkuai:get_socks5:3"
+  },
+  "load_cookies": {
+    "_out": [30, "core:get_task"],
+    "success": "do_task",
+    "failed": "load_cookies:5"
+  },
+  "login": {
+    "_out": [20, "core:get_task"],
+    "success": "",
+    "failed": "login:3"
+  },
+  "do_task": {
+    "spiderVideo": "spider_video",
+    "spiderUserTopByType": "spider_user_top",
+    "spiderUserRankList": "spider_user_rank",
+    "spiderUserSingleRankList": "spider_user_single_rank"
+  },
+  "spider_video": {
+    "success": "task_success",
+    "failed": "task_failed"
+  },
+  "spider_user_top": {
+    "success": "task_success",
+    "failed": "task_failed"
+  },
+  "spider_user_rank": {
+    "success": "task_success",
+    "failed": "task_failed"
+  },
+  "spider_user_single_rank": {
+    "success": "task_success",
+    "failed": "task_failed"
+  },
+  "task_success": {
+    "_out": [2, "core:get_task"],
+    "success": "core:get_task",
+    "failed": "task_success:3"
+  },
+  "task_failed": {
+    "success": "core:get_task"
+  }
+}
